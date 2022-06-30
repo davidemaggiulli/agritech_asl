@@ -21,8 +21,27 @@ namespace Asl.Core
                 .Where(x => x.Doctor.Id == doctorId)
                 .ToList();
         }
+        public void InsertDoctor(string name, string surname, DateTime? bd = null, string ln = null)
+        {
+            var doctor = new Doctor
+            {
+                Birthdate = bd,
+                BirthPlace = ln,
+                Name = name,
+                Surname = surname
+            };
+            using var context = new AslDbContext();
+            context.Doctors.Add(doctor);
+            try
+            {
+                context.SaveChanges();
+            }
+            catch
+            {
 
-        public void InsertPatient(string fiscalCode, string name, string surname, string streetName, string streetNumber, string city, string cap, DateTime? bd = null, string ln = null)
+            }
+        }
+        public void InsertPatient(string fiscalCode, string name, string surname, string streetName, string streetNumber, string city, string cap, int doctorId, DateTime? bd = null, string ln = null)
         {
             var patient = new Patient
             {
@@ -31,6 +50,7 @@ namespace Asl.Core
                 Surname = surname,
                 Birthdate = bd,
                 BirthPlace = ln,
+                DoctorId = doctorId,
                 Address = new Address
                 {
                     Cap = cap,

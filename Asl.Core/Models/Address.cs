@@ -11,8 +11,5 @@ namespace Asl.Core.Models
         public string StreetNumber { get; set; }
         public string City { get; set; }
         public string Cap { get; set; }
-
-        //public string PatientId { get; set; }
-        //public Patient Patient { get; set; }
     }
 }

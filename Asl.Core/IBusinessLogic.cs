@@ -11,6 +11,9 @@ namespace Asl.Core
 
         IList<Patient> GetAllPatientsByDoctorId(int doctorId);
 
-        void InsertPatient(string fiscalCode, string name, string surname, string streetName, string streetNumber, string city, string cap,  DateTime? bd = null, string ln = null);
+        void InsertPatient(string fiscalCode, string name, string surname, string streetName, string streetNumber, string city, string cap, int doctorId,  DateTime? bd = null, string ln = null);
+
+        void InsertDoctor(string name, string surname, DateTime? bd = null, string ln = null);
+
     }
 }

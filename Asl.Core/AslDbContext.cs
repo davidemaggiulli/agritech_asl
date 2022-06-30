@@ -115,11 +115,11 @@ namespace Asl.Core
                 .HasMaxLength(20)
                 .HasColumnType("varchar(20)");
 
-            //builder.Entity<Patient>()
-            //    .HasOne(p => p.Address)
-            //    .WithOne(a => a.Patient)
-            //    .HasForeignKey<Patient>(p => p.AddressId)
-            //    .HasForeignKey<Address>(a => a.PatientId);
+            builder.Entity<Patient>()
+                .HasOne(p => p.Address)
+                .WithOne()
+                .HasForeignKey<Patient>(p => p.AddressId);
+                
 
             builder.Entity<Stub>()
                 .HasOne(s => s.PrescribeDoctor)
