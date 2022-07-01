@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 
@@ -23,6 +24,7 @@ namespace Asl.Core
 
             string cs = config.GetConnectionString("Default");
             builder.UseMySQL("Server=localhost;database=asl;username=root;password=123456abc!;port=3306");
+            builder.LogTo(s => Debug.WriteLine(s));
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

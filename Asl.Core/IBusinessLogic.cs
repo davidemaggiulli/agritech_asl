@@ -13,7 +13,9 @@ namespace Asl.Core
 
         void InsertPatient(string fiscalCode, string name, string surname, string streetName, string streetNumber, string city, string cap, int doctorId,  DateTime? bd = null, string ln = null);
 
-        void InsertDoctor(string name, string surname, DateTime? bd = null, string ln = null);
+        bool InsertDoctor(Doctor doctor);
 
+        IList<Doctor> GetAllDoctors();
+        Doctor GetDoctorById(int id);
     }
 }

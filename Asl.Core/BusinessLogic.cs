@@ -21,25 +21,20 @@ namespace Asl.Core
                 .Where(x => x.Doctor.Id == doctorId)
                 .ToList();
         }
-        public void InsertDoctor(string name, string surname, DateTime? bd = null, string ln = null)
+        public bool InsertDoctor(Doctor doctor)
         {
-            var doctor = new Doctor
-            {
-                Birthdate = bd,
-                BirthPlace = ln,
-                Name = name,
-                Surname = surname
-            };
             using var context = new AslDbContext();
             context.Doctors.Add(doctor);
             try
             {
                 context.SaveChanges();
+                return true;
             }
             catch
             {
-
+                
             }
+            return false;
         }
         public void InsertPatient(string fiscalCode, string name, string surname, string streetName, string streetNumber, string city, string cap, int doctorId, DateTime? bd = null, string ln = null)
         {
@@ -69,6 +64,18 @@ namespace Asl.Core
             {
 
             }
+        }
+
+        public IList<Doctor> GetAllDoctors()
+        {
+            using var context = new AslDbContext();
+            return context.Doctors.ToList();
+        }
+
+        public Doctor GetDoctorById(int id)
+        {
+            using var context = new AslDbContext();
+            return context.Doctors.Find(id);
         }
     }
 }

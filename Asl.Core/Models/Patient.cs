@@ -15,5 +15,6 @@ namespace Asl.Core.Models
         public Doctor Doctor { get; set; }
 
         public IList<Stub> Stubs { get; set; }
+
     }
 }
